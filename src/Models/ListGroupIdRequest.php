@@ -12,8 +12,14 @@ class ListGroupIdRequest extends Model
      * @var string
      */
     public $instanceId;
+
+    /**
+     * @var string
+     */
+    public $tags;
     protected $_name = [
         'instanceId' => 'InstanceId',
+        'tags' => 'Tags',
     ];
 
     public function validate()
@@ -26,6 +32,10 @@ class ListGroupIdRequest extends Model
         $res = [];
         if (null !== $this->instanceId) {
             $res['InstanceId'] = $this->instanceId;
+        }
+
+        if (null !== $this->tags) {
+            $res['Tags'] = $this->tags;
         }
 
         return $res;
@@ -41,6 +51,10 @@ class ListGroupIdRequest extends Model
         $model = new self();
         if (isset($map['InstanceId'])) {
             $model->instanceId = $map['InstanceId'];
+        }
+
+        if (isset($map['Tags'])) {
+            $model->tags = $map['Tags'];
         }
 
         return $model;
